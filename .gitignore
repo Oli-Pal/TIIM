@@ -2,3 +2,9 @@
 ./API/obj/
 ./Models/bin/
 ./Models/obj/
+./Application/obj/
+./Application/bin/
+./Domain/bin/
+./Domain/obj/
+./Infrastructure/bin/
+./Infrastructure/obj/
