@@ -7076,19 +7076,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\oliwe\\.nuget\\packages\\": {}
+    "C:\\Users\\Prawda\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\api\\API.csproj",
+      "projectUniqueName": "P:\\Github\\TIIM\\api\\API.csproj",
       "projectName": "API",
-      "projectPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\api\\API.csproj",
-      "packagesPath": "C:\\Users\\oliwe\\.nuget\\packages\\",
-      "outputPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\api\\obj\\",
+      "projectPath": "P:\\Github\\TIIM\\api\\API.csproj",
+      "packagesPath": "C:\\Users\\Prawda\\.nuget\\packages\\",
+      "outputPath": "P:\\Github\\TIIM\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\oliwe\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Prawda\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -7100,14 +7100,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Application\\Application.csproj": {
-              "projectPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Application\\Application.csproj"
+            "P:\\Github\\TIIM\\Application\\Application.csproj": {
+              "projectPath": "P:\\Github\\TIIM\\Application\\Application.csproj"
             },
-            "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Domain\\Domain.csproj"
+            "P:\\Github\\TIIM\\Domain\\Domain.csproj": {
+              "projectPath": "P:\\Github\\TIIM\\Domain\\Domain.csproj"
             },
-            "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Infrastructure\\Infrastructure.csproj"
+            "P:\\Github\\TIIM\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "P:\\Github\\TIIM\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
