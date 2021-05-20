@@ -10,7 +10,8 @@ namespace Infrastructure.DataAccess
          protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
+            
+              BuildFollowEntity(builder);
             BuildPhotoEntity(builder);
             BuildPhotoLikeEntity(builder);
             BuildCommentEntity(builder);
@@ -20,6 +21,7 @@ namespace Infrastructure.DataAccess
         public DbSet<Comment> Comments { get; set; }
         public DbSet<PhotoLike> PhotoLikes { get; set; }
         public DbSet<Photo> Photos { get; set; }
+        public DbSet<Follow> Follows { get; set; }
 
 
         private static void BuildCommentEntity(ModelBuilder builder)
@@ -64,6 +66,24 @@ namespace Infrastructure.DataAccess
                 .HasOne(x => x.User)
                 .WithMany(x => x.Photos)
                 .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
+
+        private static void BuildFollowEntity(ModelBuilder builder)
+        {
+            builder.Entity<Follow>()
+                .HasKey(x => new { x.FollowerId, x.FolloweeId });
+
+            builder.Entity<Follow>()
+                .HasOne(f => f.Follower)
+                .WithMany(x => x.Followees)
+                .HasForeignKey(f => f.FollowerId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Follow>()
+                .HasOne(f => f.Followee)
+                .WithMany(x => x.Followers)
+                .HasForeignKey(f => f.FolloweeId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
 

@@ -186,6 +186,38 @@ namespace API.Migrations
                     b.Navigation("Liker");
 
                     b.Navigation("Photo");
+            modelBuilder.Entity("Domain.Entities.Follow", b =>
+                {
+                    b.Property<Guid>("FollowerId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("FolloweeId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("FollowerId", "FolloweeId");
+
+                    b.HasIndex("FolloweeId");
+
+                    b.ToTable("Follows");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Follow", b =>
+                {
+                    b.HasOne("Domain.Entities.AppUser", "Followee")
+                        .WithMany("Followers")
+                        .HasForeignKey("FolloweeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.AppUser", "Follower")
+                        .WithMany("Followees")
+                        .HasForeignKey("FollowerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Followee");
+
+                    b.Navigation("Follower");
                 });
 
             modelBuilder.Entity("Domain.Entities.AppUser", b =>
@@ -202,8 +234,12 @@ namespace API.Migrations
                     b.Navigation("CommentsReceived");
 
                     b.Navigation("LikesReceived");
+                    b.Navigation("Followees");
+
+                    b.Navigation("Followers");
                 });
 #pragma warning restore 612, 618
-        }
+        });
     }
+}
 }

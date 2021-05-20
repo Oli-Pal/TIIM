@@ -10,14 +10,14 @@ namespace Domain.Entities
         [EmailAddress]
         public string Email { get; set; }
         [Required]
-        public string UserName { get; set; }    
+        public string UserName { get; set; }
         [Required]
         public byte[] PasswordHash { get; set; }
         [Required]
-        public byte[] PasswordSalt { get; set; }   
+        public byte[] PasswordSalt { get; set; }
         public string Description { get; set; }
         [Required]
-        public string City { get; set; }     
+        public string City { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
@@ -29,6 +29,10 @@ namespace Domain.Entities
         public virtual ICollection<Photo> Photos { get; set; }
         public virtual ICollection<PhotoLike> LikesSent { get; set; }
         public virtual ICollection<Comment> CommentsSent { get; set; }
+
+        public virtual ICollection<Follow> Followers { get; set; }
+        public virtual ICollection<Follow> Followees { get; set; }
+
 
         public AppUser()
         {
