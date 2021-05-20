@@ -62,6 +62,22 @@ namespace API.Controllers
             return Ok(users);
         }
 
+          [HttpPut("main/update")]
+        public async Task<IActionResult> UpdateMainPhoto([FromForm]MainPhotoToUpdateRequest photo, CancellationToken cancellationToken)
+        {
+            var identifier = User.GetUserId();
+
+            var command = new UpdateMainPhotoCommand
+            {
+                Photo = photo,
+                UserId = identifier
+            };
+
+            var updatedUser = await _mediator.Send(command, cancellationToken);
+
+            return Ok(updatedUser);
+        }
+
         [HttpPut("profile/update")]
         public async Task<IActionResult> UpdateProfile([FromBody]UserToUpdateRequest user, CancellationToken cancellationToken)
         {
