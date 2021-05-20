@@ -7081,11 +7081,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "P:\\Github\\TIIM\\API\\API.csproj",
+      "projectUniqueName": "P:\\Github\\TIIM\\api\\API.csproj",
       "projectName": "API",
-      "projectPath": "P:\\Github\\TIIM\\API\\API.csproj",
+      "projectPath": "P:\\Github\\TIIM\\api\\API.csproj",
       "packagesPath": "C:\\Users\\Prawda\\.nuget\\packages\\",
-      "outputPath": "P:\\Github\\TIIM\\API\\obj\\",
+      "outputPath": "P:\\Github\\TIIM\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Prawda\\AppData\\Roaming\\NuGet\\NuGet.Config"
