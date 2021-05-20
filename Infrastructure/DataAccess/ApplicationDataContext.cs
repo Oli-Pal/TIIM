@@ -10,8 +10,7 @@ namespace Infrastructure.DataAccess
          protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            
-              BuildFollowEntity(builder);
+            BuildFollowEntity(builder);
             BuildPhotoEntity(builder);
             BuildPhotoLikeEntity(builder);
             BuildCommentEntity(builder);

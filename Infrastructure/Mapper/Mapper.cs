@@ -33,7 +33,9 @@ namespace Infrastructure.Mappers
                 FirstName = source.FirstName,
                 LastName = source.LastName,
                 BirthDate = source.BirthDate,
-                JoinDate = source.JoinDate
+                JoinDate = source.JoinDate,
+                MainPhotoUrl = source.MainPhotoUrl
+
             };
         }
 
@@ -60,7 +62,9 @@ namespace Infrastructure.Mappers
                     FirstName = source.FirstName,
                     LastName = source.LastName,
                     BirthDate = source.BirthDate,
-                    JoinDate = source.JoinDate
+                    JoinDate = source.JoinDate,
+                    MainPhotoUrl = source.MainPhotoUrl
+                    
                 });
             }
         }

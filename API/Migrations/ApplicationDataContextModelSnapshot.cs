@@ -234,9 +234,6 @@ namespace API.Migrations
                     b.Navigation("CommentsReceived");
 
                     b.Navigation("LikesReceived");
-                    b.Navigation("Followees");
-
-                    b.Navigation("Followers");
                 });
 #pragma warning restore 612, 618
         });
