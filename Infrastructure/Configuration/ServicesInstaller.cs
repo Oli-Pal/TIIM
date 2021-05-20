@@ -24,6 +24,9 @@ namespace Infrastructure.Configuration
             services.Configure<CloudinarySettings>(configuration.GetSection("CloudinarySettings"));
             services.AddScoped<ICloudinaryService, CloudinaryService>();
             services.AddScoped<IFollowRepo, FollowRepo>();
+            services.AddScoped<IPhotoLikeRepo, PhotoLikeRepo>();
+            services.AddScoped<ICommentRepo, CommentRepo>();
+
 
 
             return services;

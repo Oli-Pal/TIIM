@@ -31,6 +31,14 @@ namespace Infrastructure.DataAccess.Repos
             return photos;
         }
 
-        
+         public async Task<IEnumerable<Photo>> GetPhotosForFolloweesAsync(Guid userId, CancellationToken cancellationToken = default)
+        {
+            var photos = await _dataContext.Photos
+                .Where(p => p.User.Followers.Any(x => x.FollowerId == userId))
+                .OrderByDescending(p => p.DateAdded)
+                .ToListAsync(cancellationToken);
+
+            return photos;
+        }
     }
 }
