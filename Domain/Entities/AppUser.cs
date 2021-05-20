@@ -22,9 +22,13 @@ namespace Domain.Entities
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
+        public string MainPhotoUrl { get; set; }
+        [Required]
         public DateTime BirthDate { get; set; }
         public DateTime JoinDate { get; set; }
-
+        public virtual ICollection<Photo> Photos { get; set; }
+        public virtual ICollection<PhotoLike> LikesSent { get; set; }
+        public virtual ICollection<Comment> CommentsSent { get; set; }
 
         public AppUser()
         {
