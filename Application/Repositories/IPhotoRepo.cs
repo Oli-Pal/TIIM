@@ -10,5 +10,6 @@ namespace Application.Repos
     {
         Task<IEnumerable<Photo>> GetPhotosForUserAsync(Guid userId, CancellationToken cancellationToken = default);
         Task<Photo> GetSinglePhotoAsync(Guid photoId);
+        Task<IEnumerable<Photo>> GetPhotosForFolloweesAsync(Guid userId, CancellationToken cancellationToken = default);
     }
 }
