@@ -18,6 +18,8 @@ namespace Infrastructure.Configuration
             services.AddScoped<IUserRepo, UserRepo>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
 
+            services.AddScoped<IFollowRepo, FollowRepo>();
+
 
             return services;
         }
