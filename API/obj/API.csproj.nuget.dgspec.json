@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "P:\\Github\\TIIM\\api\\API.csproj": {}
+    "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\api\\API.csproj": {}
   },
   "projects": {
-    "P:\\Github\\TIIM\\api\\API.csproj": {
+    "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "P:\\Github\\TIIM\\api\\API.csproj",
+        "projectUniqueName": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "P:\\Github\\TIIM\\api\\API.csproj",
-        "packagesPath": "C:\\Users\\Prawda\\.nuget\\packages\\",
-        "outputPath": "P:\\Github\\TIIM\\api\\obj\\",
+        "projectPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\api\\API.csproj",
+        "packagesPath": "C:\\Users\\oliwe\\.nuget\\packages\\",
+        "outputPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Prawda\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\oliwe\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -26,14 +26,14 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "P:\\Github\\TIIM\\Application\\Application.csproj": {
-                "projectPath": "P:\\Github\\TIIM\\Application\\Application.csproj"
+              "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Application\\Application.csproj": {
+                "projectPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Application\\Application.csproj"
               },
-              "P:\\Github\\TIIM\\Domain\\Domain.csproj": {
-                "projectPath": "P:\\Github\\TIIM\\Domain\\Domain.csproj"
+              "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Domain\\Domain.csproj"
               },
-              "P:\\Github\\TIIM\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "P:\\Github\\TIIM\\Infrastructure\\Infrastructure.csproj"
+              "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -101,17 +101,17 @@
         }
       }
     },
-    "P:\\Github\\TIIM\\Application\\Application.csproj": {
+    "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "P:\\Github\\TIIM\\Application\\Application.csproj",
+        "projectUniqueName": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "P:\\Github\\TIIM\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\Prawda\\.nuget\\packages\\",
-        "outputPath": "P:\\Github\\TIIM\\Application\\obj\\",
+        "projectPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\oliwe\\.nuget\\packages\\",
+        "outputPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Prawda\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\oliwe\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -123,8 +123,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "P:\\Github\\TIIM\\Domain\\Domain.csproj": {
-                "projectPath": "P:\\Github\\TIIM\\Domain\\Domain.csproj"
+              "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Domain\\Domain.csproj"
               }
             }
           }
@@ -201,17 +201,17 @@
         }
       }
     },
-    "P:\\Github\\TIIM\\Domain\\Domain.csproj": {
+    "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "P:\\Github\\TIIM\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "P:\\Github\\TIIM\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Prawda\\.nuget\\packages\\",
-        "outputPath": "P:\\Github\\TIIM\\Domain\\obj\\",
+        "projectPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\oliwe\\.nuget\\packages\\",
+        "outputPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Prawda\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\oliwe\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -259,17 +259,17 @@
         }
       }
     },
-    "P:\\Github\\TIIM\\Infrastructure\\Infrastructure.csproj": {
+    "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "P:\\Github\\TIIM\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "P:\\Github\\TIIM\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Prawda\\.nuget\\packages\\",
-        "outputPath": "P:\\Github\\TIIM\\Infrastructure\\obj\\",
+        "projectPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\oliwe\\.nuget\\packages\\",
+        "outputPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Prawda\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\oliwe\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -281,11 +281,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "P:\\Github\\TIIM\\Application\\Application.csproj": {
-                "projectPath": "P:\\Github\\TIIM\\Application\\Application.csproj"
+              "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Application\\Application.csproj": {
+                "projectPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Application\\Application.csproj"
               },
-              "P:\\Github\\TIIM\\Domain\\Domain.csproj": {
-                "projectPath": "P:\\Github\\TIIM\\Domain\\Domain.csproj"
+              "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\STUDIA\\SEMESTR_8\\TIM\\Projekt\\GramInsta\\Domain\\Domain.csproj"
               }
             }
           }
