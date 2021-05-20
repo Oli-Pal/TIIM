@@ -104,78 +104,78 @@ namespace Infrastructure.Mappers
         }
 
 
-        //  public void MapPhotoLikeRequestToPhotoLikeEntity(PhotoLikeRequest source, out PhotoLike destination)
-        // {
-        //     destination = new PhotoLike()
-        //     {
-        //         LikerId = source.UserId,
-        //         PhotoId = source.PhotoId
-        //     };
-        // }
+         public void MapPhotoLikeRequestToPhotoLikeEntity(PhotoLikeRequest source, out PhotoLike destination)
+        {
+            destination = new PhotoLike()
+            {
+                LikerId = source.UserId,
+                PhotoId = source.PhotoId
+            };
+        }
 
-        // public void MapPhotoLikeEntityToLikerResponse(IEnumerable<PhotoLike> source, out IEnumerable<LikerResponse> destination)
-        // {
-        //     var list = new List<LikerResponse>();
+        public void MapPhotoLikeEntityToLikerResponse(IEnumerable<PhotoLike> source, out IEnumerable<LikerResponse> destination)
+        {
+            var list = new List<LikerResponse>();
 
-        //     destination = list;
+            destination = list;
 
-        //     if (source is null)
-        //     {
-        //         return;
-        //     }
+            if (source is null)
+            {
+                return;
+            }
 
-        //     foreach (var like in source)
-        //     {
-        //         var user = like.Liker;
+            foreach (var like in source)
+            {
+                var user = like.Liker;
 
-        //         list.Add(new LikerResponse
-        //         {
-        //             Id = user.Id,
-        //             Email = user.Email,
-        //             UserName = user.UserName,
-        //             MainPhotoUrl = user.MainPhotoUrl,
-        //             FirstName = user.FirstName,
-        //             LastName = user.LastName
-        //         });
-        //     }
-        // }
+                list.Add(new LikerResponse
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    UserName = user.UserName,
+                    MainPhotoUrl = user.MainPhotoUrl,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName
+                });
+            }
+        }
 
-        // public void MapCommentToAddRequestToCommentEntity(CommentToAddRequest source, out Comment destination)
-        // {
-        //     destination = new Comment()
-        //     {
-        //         PhotoId = source.PhotoId,
-        //         Content = source.Content
-        //     };
-        // }
+        public void MapCommentToAddRequestToCommentEntity(CommentToAddRequest source, out Comment destination)
+        {
+            destination = new Comment()
+            {
+                PhotoId = source.PhotoId,
+                Content = source.Content
+            };
+        }
 
-        // public void MapCommentEntityToCommentResponse(IEnumerable<Comment> source, out IEnumerable<CommentResponse> destination)
-        // {
-        //     var list = new List<CommentResponse>();
+        public void MapCommentEntityToCommentResponse(IEnumerable<Comment> source, out IEnumerable<CommentResponse> destination)
+        {
+            var list = new List<CommentResponse>();
 
-        //     destination = list;
+            destination = list;
 
-        //     if(source is null)
-        //     {
-        //          return;
-        //     }
+            if(source is null)
+            {
+                 return;
+            }
 
-        //     foreach(var comment in source)
-        //     {
-        //         var user = comment.User;
+            foreach(var comment in source)
+            {
+                var user = comment.User;
 
-        //         list.Add(new CommentResponse
-        //         {
-        //             Content = comment.Content,
-        //             DateAdded = comment.DateAdded,
-        //             Id = comment.Id,
-        //             UserFirstName = user.FirstName,
-        //             UserLastName = user.LastName,
-        //             UserMainPhotoUrl = user.MainPhotoUrl,
-        //             UserUserName = user.UserName
-        //         });
-        //     }
-        // }
+                list.Add(new CommentResponse
+                {
+                    Content = comment.Content,
+                    DateAdded = comment.DateAdded,
+                    Id = comment.Id,
+                    UserFirstName = user.FirstName,
+                    UserLastName = user.LastName,
+                    UserMainPhotoUrl = user.MainPhotoUrl,
+                    UserUserName = user.UserName
+                });
+            }
+        }
 
          public void MapFollowEntityToFollowerDetailResponse(IEnumerable<Follow> sources, out IEnumerable<UserDetailResponse> destinations)
         {

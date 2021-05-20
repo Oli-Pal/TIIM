@@ -55,6 +55,21 @@ namespace API.Controllers
             return Ok(photos);
         }
 
+        [HttpGet("followees")]
+        public async Task<IActionResult> GetFolloweesPhotos(CancellationToken cancellationToken)
+        {
+            var identifier = User.GetUserId();
+
+            var query = new GetFolloweesPhotosQuery 
+            {
+                UserId = identifier
+            };
+
+            var photos = await _mediator.Send(query, cancellationToken);
+
+            return Ok(photos);
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePhoto(string id)
         {

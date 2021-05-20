@@ -11,10 +11,10 @@ namespace Application.Mapper
         void MapAppUserEntityToUserDetailResponse(IEnumerable<AppUser> sources, out IEnumerable<UserDetailResponse> destinations);
 
         void MapPhotoEntityToPhotoToReturnResponse(IEnumerable<Photo> sources, out IEnumerable<PhotoToReturnResponse> destinations);
-        // void MapPhotoLikeRequestToPhotoLikeEntity(PhotoLikeRequest source, out PhotoLike destination);
-        // void MapPhotoLikeEntityToLikerResponse(IEnumerable<PhotoLike> source, out IEnumerable<LikerResponse> destination);
-        // void MapCommentEntityToCommentResponse(IEnumerable<Comment> source, out IEnumerable<CommentResponse> destination);
-        // void MapCommentToAddRequestToCommentEntity(CommentToAddRequest source, out Comment destination);
+        void MapPhotoLikeRequestToPhotoLikeEntity(PhotoLikeRequest source, out PhotoLike destination);
+        void MapPhotoLikeEntityToLikerResponse(IEnumerable<PhotoLike> source, out IEnumerable<LikerResponse> destination);
+        void MapCommentEntityToCommentResponse(IEnumerable<Comment> source, out IEnumerable<CommentResponse> destination);
+        void MapCommentToAddRequestToCommentEntity(CommentToAddRequest source, out Comment destination);
 
         void MapFollowEntityToFollowerDetailResponse(IEnumerable<Follow> sources, out IEnumerable<UserDetailResponse> destinations);
         void MapFollowEntityToFolloweeDetailResponse(IEnumerable<Follow> sources, out IEnumerable<UserDetailResponse> destinations);
