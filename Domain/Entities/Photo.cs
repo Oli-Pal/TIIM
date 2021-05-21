@@ -8,7 +8,7 @@ namespace Domain.Entities
     {
         [Required]
         public Guid Id { get; set; }
-        // [Required]
+        [Required]
         public string Url { get; set; }
         public string Description { get; set; }
         [Required]
