@@ -120,7 +120,7 @@ export class RegisterComponent implements OnInit {
 
         this.snackBar.open(
           `Congratulations ${firstName}.\n
-        You're now member of dumplings community.`,
+        You're now member of community.`,
           '',
           {
             duration: 2000,

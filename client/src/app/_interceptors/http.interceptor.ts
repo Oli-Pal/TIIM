@@ -16,16 +16,18 @@ export class httpInterceptor implements HttpInterceptor {
     // add authorization header to request
 
     //Get Token data from local storage
-    let tokenInfo: string = localStorage.getItem('dumplingram-token-info');
+    let tokenInfo: string = localStorage.getItem('token-info');
 
     if (tokenInfo) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${tokenInfo}`,
-          'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+          Authorization: `Bearer ${tokenInfo}`,         
+          'Content-Type': 'application/json'
         },
       });
     }
+
+    // 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
 
     return newRequest.handle(request);
   }

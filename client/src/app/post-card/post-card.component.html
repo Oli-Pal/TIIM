@@ -1,12 +1,16 @@
 <mat-card>
   <mat-card-header>
     <img
+      class="url-picture"
       (click)="navigateToProfile(photo.userId)"
       mat-card-avatar
-      [src]="photo.userPhotoUrl"
+      [src]="
+        photo.userPhotoUrl || '../../assets/temp-images/default_avatar.jpg'
+      "
       style="background-size: cover; cursor: pointer"
     />
     <mat-card-title
+      class="username-form"
       style="cursor: pointer"
       (click)="navigateToProfile(photo.userId)"
       >{{ photo.userUserName }}</mat-card-title
@@ -20,14 +24,86 @@
     <p>
       {{ photo.description }}
     </p>
-    <button mat-icon-button aria-label="Example icon-button with menu icon" (click)="likePhoto()">
+    <button
+      *ngIf="!isLiked"
+      mat-icon-button
+      aria-label="Example icon-button with menu icon"
+      (click)="likePhoto()"
+    >
       <mat-icon>favorite_outline</mat-icon>
     </button>
-    <button mat-icon-button aria-label="Example icon-button with menu icon">
+    <button
+      *ngIf="isLiked"
+      mat-icon-button
+      aria-label="Example icon-button with menu icon"
+      (click)="dislikePhoto()"
+    >
+      <mat-icon>favorite_outline</mat-icon>
+    </button>
+    <button
+      *ngIf="!isCommentClicked"
+      mat-icon-button
+      aria-label="Example icon-button with menu icon"
+      (click)="clickComment()"
+    >
       <mat-icon>messenger_outline</mat-icon>
     </button>
-    <p class="reaction-p">Polubienia: {{this.likers.length}}</p>
-    <p class="reaction-p">Zobacz wszystkie komentarze: 420</p>
-    <p class="reaction-p"><strong>lazar_angelov: </strong>wow beautiful</p>
+
+    <button
+      *ngIf="isCommentClicked"
+      mat-icon-button
+      aria-label="Example icon-button with menu icon"
+      (click)="unclickComment()"
+    >
+      <mat-icon>messenger_outline</mat-icon>
+    </button>
+
+    <form class="example-form" (submit)="addComment()">
+      <mat-form-field *ngIf="isCommentClicked" class="example-full-width">
+        <mat-label>Comment</mat-label>
+        <input
+          [formControl]="commentInput"
+          matInput
+          #content
+          maxlength="256"
+          placeholder="What a ..."
+        />
+        <mat-hint align="start"><strong>Write your comment</strong> </mat-hint>
+        <mat-hint align="end">{{ content.value.length }} / 256</mat-hint>
+      </mat-form-field>
+    </form>
+
+    <mat-form-field *ngIf="isCommentClicked" class="example-full-width">
+      <div *ngFor="let comment of comments">
+        <ng-container *ngIf="user?.id == comment?.userId">
+          <div class="container-all">
+            <div class="container-img">
+              <p class="nickname-form">
+                <img
+                  class="account-picture"
+                  mat-card-avatar
+                  src="{{ comment?.userMainPhotoUrl }}"
+                  alt=""
+                />{{ comment.userUserName }}
+              </p>
+            </div>
+            <div class="container-content">
+              <p class="">
+                {{ comment?.content }}
+                <ng-container *ngIf="user?.id == comment?.userid">
+                  <button
+                    text="delete"
+                    class="btn-delete"
+                    (click)="removeComment(comment.id)"
+                  ></button>
+                </ng-container>
+              </p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </mat-form-field>
+
+    <p class="reaction-p">Polubienia: {{ this.likers.length }}</p>
   </mat-card-content>
 </mat-card>

@@ -1,30 +1,50 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { CommentResponse } from '../_models/commentResponse';
 import { PhotoResponse } from '../_models/photoResponse';
 import { UserDetailResponse } from '../_models/userDetailResponse';
+import { CommentService } from '../_services/comment.service';
 import { PhotoLikeService } from '../_services/photoLike.service';
+import { MatListModule } from '@angular/material/list';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-post-card',
   templateUrl: './post-card.component.html',
   styleUrls: ['./post-card.component.css'],
 })
+
+
 export class PostCardComponent implements OnInit {
   @Input() photo: PhotoResponse;
+  @Input() comment: CommentResponse;
+  @Input() user: UserDetailResponse;
   loggedUser: UserDetailResponse;
   isLiked: boolean;
+  isCommentClicked: boolean;
   likers: any[] = [];
+  comments: any[] = [];
+  users: any[] = [];
+  commentInput = new FormControl();
+  content: string;
+
   constructor(
     private router: Router,
     private photoLikeService: PhotoLikeService,
+    private commentService: CommentService,
     private snackBar: MatSnackBar
-  ) {}
+  ) {
+    this.commentInput.valueChanges.subscribe(() => {
+      this.content = this.commentInput.value;
+    });
+  }
 
   ngOnInit(): void {
     this.loggedUser = JSON.parse(localStorage.getItem('user-info'));
     this.checkIfPhotoIsLiked(this.photo.id, this.loggedUser.id);
     this.getLikes();
+    this.getComments();
   }
 
   public navigateToProfile(id: string) {
@@ -41,6 +61,12 @@ export class PostCardComponent implements OnInit {
     this.photoLikeService.addLike(this.photo.id).subscribe(
       () => {
         this.isLiked = true;
+        this.getLikes();
+        this.snackBar.open('You liked', '', {
+          duration: 2000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
       },
       (error) => {
         this.snackBar.open(error, '', {
@@ -56,6 +82,12 @@ export class PostCardComponent implements OnInit {
     this.photoLikeService.removeLike(this.photo.id).subscribe(
       () => {
         this.isLiked = false;
+        this.getLikes();
+         this.snackBar.open('You disliked', '', {
+          duration: 2000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
       },
       (error) => {
         this.snackBar.open(error, '', {
@@ -73,5 +105,64 @@ export class PostCardComponent implements OnInit {
         this.likers = data;
       }
     )
+  }
+
+  public getComments() {
+    this.commentService.getCommentsForPhoto(this.photo.id).subscribe(
+      (data) => {
+        this.comments = data;
+      }
+    )
+  }
+
+  public clickComment() {
+    this.isCommentClicked = true;
+    this.getComments();
+  }
+
+  public unclickComment() {
+    this.isCommentClicked = false;
+    this.getComments()
+  }
+
+  public addComment() {
+    this.commentService.addComment(this.photo.id, this.content).subscribe(
+      () => {
+        
+        this.snackBar.open('You Commented', '', {
+         duration: 2000,
+         horizontalPosition: 'end',
+         verticalPosition: 'top',
+       });
+       this.getComments();},
+      (error) => {
+        this.snackBar.open(error, '', {
+          duration: 2000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
+      }
+    );
+    
+  }
+
+  public removeComment(commentId: string) {
+    debugger;
+    this.commentService.removeComment(commentId).subscribe(
+      () => {
+        this.snackBar.open('You deleted comment', '', {
+         duration: 2000,
+         horizontalPosition: 'end',
+         verticalPosition: 'top',
+       });
+       this.getComments(); },
+      (error) => {
+        this.snackBar.open(error, '', {
+          duration: 2000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
+      }
+    );
   }
 }

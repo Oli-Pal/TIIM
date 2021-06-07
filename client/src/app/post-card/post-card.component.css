@@ -1,17 +1,68 @@
 mat-card {
-    border-radius: 20px;
-  max-width: 500px;
+  border-radius: 20px;
+  max-width: 550px;
   min-width: 200px;
   margin-inline: auto;
   margin-top: 20px;
 }
 
 mat-card-header {
-  padding: 16px;
+  padding: 10px;
 }
 
+.account-picture {
+  background-size: cover;
+  margin-block: auto;
+  margin-right: 5px;
+  width: 22px;
+  height: 22px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(133, 133, 133);
+  vertical-align: sub;
+}
 
+.url-picture {
+  background-size: cover;
+  margin-block: auto;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  width: 72px;
+  height: 72px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(204, 16, 110);
+  vertical-align: sup;
+}
+
+.nickname-form {
+  text-shadow: 3px 3px 3px rgb(204, 16, 110);
+}
+
+.username-form {
+  text-shadow: 3px 3px 3px rgb(204, 16, 110);
+  vertical-align: sub;
+}
 
 .reaction-p {
-    margin-top: 16px;
+  margin-top: 16px;
+}
+
+.example-form {
+  margin-top: 2px;
+  margin-bottom: 5px;
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.btn-delete {
+  border-radius: 8px;
+  padding: 10px 10px;
+  background-color: #8d0d04;
+  vertical-align: super;
 }
