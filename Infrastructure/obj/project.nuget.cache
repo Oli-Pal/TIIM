@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/uZnTKoq8E4VFDWy2eimcz+9HAR2KsW8ge9vAA0LXRrQw61TQW2xjYNjEgdsJP5BOdcLioY0NxUu2Kgixy9Rfg==",
+  "dgSpecHash": "4d0DEJFwD0mWONcSn27Bs2SDDbUy8sUwVdbozmfLaqDopxLzi2bm8oALnrm8XbOUcK9Tpea5t8zp7hdlxGyBcA==",
   "success": true,
   "projectFilePath": "P:\\Github\\TIIM\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -22,9 +22,9 @@
     "C:\\Users\\Prawda\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Prawda\\.nuget\\packages\\microsoft.data.sqlite.core\\5.0.4\\microsoft.data.sqlite.core.5.0.4.nupkg.sha512",
     "C:\\Users\\Prawda\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\3.1.6\\microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512",
-    "C:\\Users\\Prawda\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.4\\microsoft.entityframeworkcore.5.0.4.nupkg.sha512",
-    "C:\\Users\\Prawda\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.4\\microsoft.entityframeworkcore.abstractions.5.0.4.nupkg.sha512",
-    "C:\\Users\\Prawda\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.4\\microsoft.entityframeworkcore.analyzers.5.0.4.nupkg.sha512",
+    "C:\\Users\\Prawda\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.6\\microsoft.entityframeworkcore.5.0.6.nupkg.sha512",
+    "C:\\Users\\Prawda\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.6\\microsoft.entityframeworkcore.abstractions.5.0.6.nupkg.sha512",
+    "C:\\Users\\Prawda\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.6\\microsoft.entityframeworkcore.analyzers.5.0.6.nupkg.sha512",
     "C:\\Users\\Prawda\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.4\\microsoft.entityframeworkcore.design.5.0.4.nupkg.sha512",
     "C:\\Users\\Prawda\\.nuget\\packages\\microsoft.entityframeworkcore.proxies\\5.0.4\\microsoft.entityframeworkcore.proxies.5.0.4.nupkg.sha512",
     "C:\\Users\\Prawda\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.4\\microsoft.entityframeworkcore.relational.5.0.4.nupkg.sha512",
