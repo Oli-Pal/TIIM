@@ -53,7 +53,7 @@ namespace API.Controllers
             return Ok(loggedUser);
         }
 
-        [AllowAnonymous]
+        // [AllowAnonymous]
         [HttpGet("search")]
         public async Task<IActionResult> GetUsersWithKeyWord([FromQuery]GetUsersWithKeyWordQuery keyWordQuery, CancellationToken cancellationToken)
         {

@@ -1,12 +1,20 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
-import { TabNavigator } from './InstaNavigator';
+import { NavigationContainer } from '@react-navigation/native';
+import { TabNavigator, AuthNavigator } from './InstaNavigator';
+import StartupScreen from '../screens/StartupScreen';
+
 
 const AppNavigator = (props) => {
+
+  const isAuth = useSelector((state) => !!state.auth.token); // if we have token it will be true if not it will be false
+  const didTryAutoLogin = useSelector((state) => state.auth.didTryAutoLogin);
   return (
     <NavigationContainer>
-      <TabNavigator />
+      {!isAuth && didTryAutoLogin && <AuthNavigator />}
+      {!isAuth && !didTryAutoLogin && <StartupScreen />}
+     {isAuth && <TabNavigator />}
     </NavigationContainer>
   );
 };

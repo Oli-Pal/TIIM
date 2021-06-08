@@ -11,7 +11,7 @@ import MainScreen, {screenOptions as mainScreenOptions} from '../screens/insta/M
 import SearchScreen, {screenOptions as searchScreenOptions} from '../screens/insta/SearchScreen';
 import AddPostScreen, {screenOptions as addPostScreenOptions} from '../screens/user/AddPostScreen';
 import EditProfileScreen, {screenOptions as editProfileScreenOptions} from '../screens/user/EditProfileScreen';
-
+import AuthScreen,  {screenOptions as authScreenOptions} from '../screens/user/AuthScreen';
 
 
 
@@ -19,7 +19,7 @@ const Tab = createMaterialBottomTabNavigator();
 
 export const TabNavigator = () => {
     return (
-        <Tab.Navigator barStyle={{ backgroundColor: 'black' }} >
+        <Tab.Navigator barStyle={{ backgroundColor: '#C13584' }} >
             <Tab.Screen name = "Home" component={MainStackScreen} 
             options={{
             tabBarIcon: (props) => (
@@ -107,5 +107,15 @@ const EditProfileStackScreen = () => {
 }
 
 
+
+const AuthStackNavigator = createStackNavigator();
+
+export const AuthNavigator = () => {
+  return (
+    <AuthStackNavigator.Navigator>
+      <AuthStackNavigator.Screen name="Auth" component={AuthScreen} options={authScreenOptions}/>
+    </AuthStackNavigator.Navigator>
+  );
+};
 
 
