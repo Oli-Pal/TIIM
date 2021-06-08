@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Infrastructure.Configuration;
 using Application.Middleware;
+using Application.SignalR;
+using System;
 
 namespace API
 {
@@ -21,6 +23,11 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConfigureServices(Configuration);
+            services.AddCors();
+            services.AddSignalR(e => {
+                e.MaximumReceiveMessageSize = 102400000;
+                e.EnableDetailedErrors = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,12 +51,12 @@ namespace API
             app.UseAuthentication();
             app.UseAuthorization();
 
-             app.UseEndpoints(endpoints =>
-             {
-                 endpoints.MapControllers();
-            //     endpoints.MapHub<PresenceHub>("hubs/presence");
-            //     endpoints.MapHub<ChatHub>("hubs/chat");
-             });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapHub<PresenceHub>("hubs/presence");
+                endpoints.MapHub<ChatHub>("hubs/chat");
+            });
         }
     }
 }

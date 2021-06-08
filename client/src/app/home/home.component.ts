@@ -7,6 +7,7 @@ import { DialogHelperService } from '../_helpers/dialogHelper.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PhotoResponse } from '../_models/photoResponse';
 import { PhotoService } from '../_services/photo.service';
+import { PresenceService } from '../_services/presence.service';
 
 @Component({
   selector: 'app-home',
@@ -29,12 +30,14 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private snackBar: MatSnackBar,
-    private photoService: PhotoService
+    private photoService: PhotoService,
+    private presence: PresenceService
   ) {}
 
   ngOnInit(): void {
     this.photosOfFollowees = [];
     this.loggedUser = JSON.parse(localStorage.getItem('user-info'));
+    this.presence.createHubConnection(this.loggedUser); //spr
     this.initializeUploader();
     this.getPhotosOfFollowees();
   }

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(ApplicationDataContext))]
-    [Migration("20210608150814_MessagesEntityAdded")]
-    partial class MessagesEntityAdded
+    [Migration("20210608182403_MessageEntityAdded")]
+    partial class MessageEntityAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

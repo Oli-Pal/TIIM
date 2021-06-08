@@ -51,7 +51,7 @@
       style="margin-top: 30px"
     >
       <mat-grid-tile
-        ><button mat-raised-button color="accent" class="grid-button">
+        ><button mat-raised-button color="accent" class="grid-button" (click)="newMessageClicked()">
           New message
         </button></mat-grid-tile
       >
@@ -82,14 +82,21 @@
       cols="3"
       rowHeight="1:1"
       style="margin-top: 30px"
-    >
+    ><div class="col-8" *ngIf="messageIsClicked">
+      <tabset class="member-tabset" #memberTabs>
+      <tab (selectTab)="onTabActivated($event)">
+        <app-member-messages [userName]="user.userName"></app-member-messages>
+      </tab></tabset></div>
       <mat-grid-tile *ngFor="let photo of photos">
         <img
           class="image-thumbnail"
           src="{{ photo.url }}"
           (click)="openPostPreviewDialog(photo)"
         />
+        
       </mat-grid-tile>
     </mat-grid-list>
   </mat-card-content>
+  
 </mat-card>
+

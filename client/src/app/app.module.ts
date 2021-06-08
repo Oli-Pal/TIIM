@@ -42,6 +42,10 @@ import { AnonymousGuard } from './_guards/anonymous.guard';
 import { FollowService } from './_services/follow.service';
 import { UserListDialogComponent } from './dialogs/user-list-dialog/user-list-dialog.component';
 import { PostPreviewDialogComponent } from './dialogs/post-preview-dialog/post-preview-dialog.component';
+import { PresenceService } from './_services/presence.service';
+import { ToastrModule } from 'ngx-toastr';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { MemberMessagesComponent } from './member-messages/member-messages.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,8 +57,9 @@ import { PostPreviewDialogComponent } from './dialogs/post-preview-dialog/post-p
     InfoDialogComponent,
     PostCardComponent,
     AccountDetailsComponent,
-    UserListDialogComponent,    
-    PostPreviewDialogComponent
+    UserListDialogComponent,
+    PostPreviewDialogComponent,
+    MemberMessagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +82,10 @@ import { PostPreviewDialogComponent } from './dialogs/post-preview-dialog/post-p
     MatGridListModule,
     MatCardModule,
     MatProgressBarModule,
+    TabsModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-full-width'
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true },
@@ -90,7 +99,8 @@ import { PostPreviewDialogComponent } from './dialogs/post-preview-dialog/post-p
     UserService,
     PhotoService,
     FollowService,
-    AccountDetailsResolver
+    AccountDetailsResolver,
+    PresenceService
   ],
   bootstrap: [AppComponent],
 })

@@ -16,3 +16,9 @@ mat-card-content {
 .wide-button {
   width: 100%;
 }
+.green-snackbar {
+  background: #07b925;
+}
+.red-snackbar {
+  background: #b90707;
+}

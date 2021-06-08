@@ -31,6 +31,7 @@ namespace Infrastructure.Configuration
             services.AddScoped<IConversationRepo, ConversationRepo>();
             services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<IConnectionService, ConnectionService>();
+             services.AddSingleton<IPresenceService, PresenceService>();
 
             return services;
         }

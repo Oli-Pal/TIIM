@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Message } from 'src/app/_models/message';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
@@ -7,28 +8,34 @@ import { DialogHelperService } from '../_helpers/dialogHelper.service';
 import { PhotoResponse } from '../_models/photoResponse';
 import { UserDetailResponse } from '../_models/userDetailResponse';
 import { FollowService } from '../_services/follow.service';
+import { MessageService } from '../_services/message.service';
 import { PhotoService } from '../_services/photo.service';
+import { PresenceService } from '../_services/presence.service';
 import { UserService } from '../_services/user.service';
+import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
+
 
 @Component({
   selector: 'app-account-details',
   templateUrl: './account-details.component.html',
   styleUrls: ['./account-details.component.css'],
 })
-export class AccountDetailsComponent implements OnInit {
+export class AccountDetailsComponent implements OnInit, OnDestroy {
   //temporary
+  @ViewChild('memberTabs', {static: true}) memberTabs: TabsetComponent;
   isMine: boolean = false;
   isFollowed: boolean = false;
   user: UserDetailResponse;
   photos: PhotoResponse[];
   loggedUser: UserDetailResponse;
-  
-
+  messages: Message[] = [];
+  activeTab: TabDirective;
   //followers
   followers: UserDetailResponse[];
   followees: UserDetailResponse[];
   mainPhotoUrl = new FormControl();
   avatarIsClicked: boolean = false;
+  messageIsClicked: boolean = false;
 
   constructor(
     private photoService: PhotoService,
@@ -36,17 +43,20 @@ export class AccountDetailsComponent implements OnInit {
     private followService: FollowService,
     private userService: UserService,
     private snackBar: MatSnackBar,
-    private dialogHelper: DialogHelperService
+    private dialogHelper: DialogHelperService,
+    private presence: PresenceService,
+    private messageService: MessageService
   ) {
     this.mainPhotoUrl.valueChanges.subscribe(() => {
       this.user.mainPhotoUrl = this.mainPhotoUrl.value;
     });
   }
+
   ngOnInit(): void {
     //temporary
     this.initializeArrays();
     this.loggedUser = JSON.parse(localStorage.getItem('user-info'));
-
+    this.presence.createHubConnection(this.loggedUser)
     this.route.data.subscribe((data) => {
       this.checkIfProfileIsMine(data);
       this.getFollowers();
@@ -172,5 +182,34 @@ export class AccountDetailsComponent implements OnInit {
     }
   }
 
+  loadMessages() {
+    this.messageService.getMessageThread(this.user.userName).subscribe(messages => {
+      this.messages = messages;
+    })
+  }
+  selectTab(tabId: number) {
+    this.memberTabs.tabs[tabId].active = true;
+  }
+
+  onTabActivated(data: TabDirective) {
+    this.activeTab = data;
+    if (this.activeTab.heading === 'Messages' && this.messages.length === 0) {
+      this.messageService.createHubConnection(this.loggedUser, this.user.userName);
+    } else {
+      this.messageService.stopHubConnection();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.messageService.stopHubConnection();
+  }
+
+  newMessageClicked() {
+    if ((this.messageIsClicked == false)) {
+      this.messageIsClicked = true;
+    } else {
+      this.messageIsClicked = false;
+    }
+  }
 
 }
