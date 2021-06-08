@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { FollowType } from '../dialogs/user-list-dialog/user-list-dialog.component';
@@ -7,6 +8,7 @@ import { PhotoResponse } from '../_models/photoResponse';
 import { UserDetailResponse } from '../_models/userDetailResponse';
 import { FollowService } from '../_services/follow.service';
 import { PhotoService } from '../_services/photo.service';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-account-details',
@@ -20,21 +22,30 @@ export class AccountDetailsComponent implements OnInit {
   user: UserDetailResponse;
   photos: PhotoResponse[];
   loggedUser: UserDetailResponse;
+  
 
   //followers
   followers: UserDetailResponse[];
   followees: UserDetailResponse[];
+  mainPhotoUrl = new FormControl();
+  avatarIsClicked: boolean = false;
 
   constructor(
     private photoService: PhotoService,
     private route: ActivatedRoute,
     private followService: FollowService,
+    private userService: UserService,
     private snackBar: MatSnackBar,
     private dialogHelper: DialogHelperService
-  ) {}
+  ) {
+    this.mainPhotoUrl.valueChanges.subscribe(() => {
+      this.user.mainPhotoUrl = this.mainPhotoUrl.value;
+    });
+  }
   ngOnInit(): void {
     //temporary
     this.initializeArrays();
+    this.loggedUser = JSON.parse(localStorage.getItem('user-info'));
 
     this.route.data.subscribe((data) => {
       this.checkIfProfileIsMine(data);
@@ -45,16 +56,13 @@ export class AccountDetailsComponent implements OnInit {
     });
   }
 
-  
-
   public follow() {
-    
     this.followService.addFollow(this.user.id).subscribe(
       () => {
         this.snackBar.open(`You followed ${this.user.userName}!`, 'Ok', {
           duration: 2000,
           horizontalPosition: 'center',
-          verticalPosition: 'bottom'
+          verticalPosition: 'bottom',
         });
         this.getFollowees();
         this.getFollowers();
@@ -71,7 +79,7 @@ export class AccountDetailsComponent implements OnInit {
         this.snackBar.open(`You unfollowed ${this.user.userName}!`, 'Ok', {
           duration: 2000,
           horizontalPosition: 'center',
-          verticalPosition: 'bottom'
+          verticalPosition: 'bottom',
         });
         this.getFollowees();
         this.getFollowers();
@@ -155,4 +163,14 @@ export class AccountDetailsComponent implements OnInit {
       }
     );
   }
+
+  public clickAvatar() {
+    if ((this.avatarIsClicked == false)) {
+      this.avatarIsClicked = true;
+    } else {
+      this.avatarIsClicked = false;
+    }
+  }
+
+
 }

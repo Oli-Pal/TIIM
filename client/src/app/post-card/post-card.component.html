@@ -90,13 +90,15 @@
             <div class="container-content">
               <p class="">
                 {{ comment?.content }}
-                <ng-container *ngIf="user?.id == comment?.userid">
+                <!-- <ng-container *ngIf="user?.id == comment?.userid"> -->
                   <button
                     text="delete"
+                    mat-icon-button
                     class="btn-delete"
+                    aria-label="Example icon-button with menu icon"
                     (click)="removeComment(comment.id)"
-                  ></button>
-                </ng-container>
+                  ><mat-icon>delete_outline</mat-icon></button>
+                <!-- </ng-container> -->
               </p>
             </div>
           </div>

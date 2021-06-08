@@ -8,3 +8,16 @@ p {
     height: 40%;
   width: 100%;
 }
+
+.header-container {
+  width: 100%;
+  margin-block: auto;
+  vertical-align: text-top;
+  text-align: center;
+  margin-left: 5px;
+}
+
+.btn-default {
+  width: 20px;
+  height: 10px;
+}

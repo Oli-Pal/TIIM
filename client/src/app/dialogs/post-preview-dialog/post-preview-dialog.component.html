@@ -1,8 +1,25 @@
-<mat-grid-list cols="3" rowHeight="500px">
+<mat-grid-list cols="3" rowHeight="500px" >
   <mat-grid-tile [colspan]="2" style="border-radius: 20px">
     <img class="image-preview" src="{{ data.photo.url }}" />
   </mat-grid-tile>
   <mat-grid-tile [colspan]="1" style="margin-left: 5px; padding: 5px">
-   
+    <div class="header-container">
+      <mat-card-title>
+        Description:
+        <mat-card-subtitle>{{ data.photo.description }}</mat-card-subtitle>
+      </mat-card-title>
+      <mat-card-title>
+        Date:
+        <mat-card-subtitle>{{ data.photo.dateAdded }}</mat-card-subtitle>
+      </mat-card-title>
+      <mat-card-title>
+        Url:
+        <mat-card-subtitle>{{ data.photo.url }}</mat-card-subtitle>
+      </mat-card-title>
+      
+  
+    
+
+    </div>
   </mat-grid-tile>
 </mat-grid-list>

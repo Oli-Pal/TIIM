@@ -61,8 +61,6 @@ mat-card-header {
 }
 
 .btn-delete {
-  border-radius: 8px;
-  padding: 10px 10px;
-  background-color: #8d0d04;
-  vertical-align: super;
+  border-radius: 3px;
+  vertical-align: middle;
 }

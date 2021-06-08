@@ -3,7 +3,10 @@
     <img
       class="account-picture"
       mat-card-avatar
-      [src]="user.mainPhotoUrl || '../../assets/temp-images/default_avatar.jpg'"
+      [src]="
+        loggedUser.mainPhotoUrl || '../../assets/temp-images/default_avatar.jpg'
+      "
+      (click)="clickAvatar()"
     />
     <div class="header-container">
       <mat-card-title>{{ user.userName }}</mat-card-title>
@@ -14,25 +17,39 @@
           ></mat-grid-tile
         >
         <mat-grid-tile
-          ><mat-card-subtitle class="grid-subtitle"  (click)="openFollowersDialog()"
-            > Followers: {{ followers.length }}</mat-card-subtitle
+          ><mat-card-subtitle
+            class="grid-subtitle"
+            (click)="openFollowersDialog()"
+          >
+            Followers: {{ followers.length }}</mat-card-subtitle
           ></mat-grid-tile
         >
         <mat-grid-tile
-          ><mat-card-subtitle class="grid-subtitle" (click)="openFolloweesDialog()"
+          ><mat-card-subtitle
+            class="grid-subtitle"
+            (click)="openFolloweesDialog()"
             >Followees: {{ followees.length }}</mat-card-subtitle
           ></mat-grid-tile
         >
       </mat-grid-list>
     </div>
   </mat-card-header>
-  <mat-card-content style="margin-top: 30px; padding: 32px;">
-    <mat-card-title style="text-transform: capitalize; margin-bottom: 15px;">{{user.firstName}} {{user.lastName}}</mat-card-title>
-    <mat-card-subtitle style="text-transform: capitalize;">{{user.city}}</mat-card-subtitle>
-    <mat-card-subtitle>{{user.description}}</mat-card-subtitle>
+  <mat-card-content style="margin-top: 30px; padding: 32px">
+    <mat-card-title style="text-transform: capitalize; margin-bottom: 15px"
+      >{{ user.firstName }} {{ user.lastName }}</mat-card-title
+    >
+    <mat-card-subtitle style="text-transform: capitalize">{{
+      user.city
+    }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ user.description }}</mat-card-subtitle>
   </mat-card-content>
-  <mat-card-content >
-    <mat-grid-list *ngIf="!isMine" cols="2" rowHeight="50px" style="margin-top: 30px">
+  <mat-card-content>
+    <mat-grid-list
+      *ngIf="!isMine"
+      cols="2"
+      rowHeight="50px"
+      style="margin-top: 30px"
+    >
       <mat-grid-tile
         ><button mat-raised-button color="accent" class="grid-button">
           New message
@@ -60,9 +77,18 @@
       >
     </mat-grid-list>
     <mat-divider *ngIf="photos.length > 0"></mat-divider>
-    <mat-grid-list *ngIf="photos.length > 0" cols="3" rowHeight="1:1" style="margin-top: 30px">
+    <mat-grid-list
+      *ngIf="photos.length > 0"
+      cols="3"
+      rowHeight="1:1"
+      style="margin-top: 30px"
+    >
       <mat-grid-tile *ngFor="let photo of photos">
-        <img class="image-thumbnail" src="{{ photo.url }}" (click)="openPostPreviewDialog(photo)" />
+        <img
+          class="image-thumbnail"
+          src="{{ photo.url }}"
+          (click)="openPostPreviewDialog(photo)"
+        />
       </mat-grid-tile>
     </mat-grid-list>
   </mat-card-content>

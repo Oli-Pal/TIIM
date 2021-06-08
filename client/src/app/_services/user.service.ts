@@ -48,4 +48,6 @@ export class UserService {
   public getSingle(id: string) {
     return this.http.get<UserDetailResponse>(`${this.url}single?Id=${id}`);
   }
+
+
 }

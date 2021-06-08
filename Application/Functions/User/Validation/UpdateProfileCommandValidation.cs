@@ -23,6 +23,8 @@ namespace Application.Functions.User.Validation
             
             RuleFor(x => x.User.LastName).NotEmpty().NotNull();
 
+            RuleFor(x => x.User.MainPhotoUrl).NotEmpty().NotNull();
+
         }
     }
 }

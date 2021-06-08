@@ -105,6 +105,7 @@ namespace Infrastructure.Mappers
             destination.FirstName = source.FirstName;
             destination.LastName = source.LastName;
             destination.BirthDate = source.BirthDate;
+            destination.MainPhotoUrl = source.MainPhotoUrl;
         }
 
 
