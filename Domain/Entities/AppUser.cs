@@ -33,6 +33,9 @@ namespace Domain.Entities
         public virtual ICollection<Follow> Followers { get; set; }
         public virtual ICollection<Follow> Followees { get; set; }
 
+        public virtual ICollection<Message> MessagesSent { get; set; }
+        public virtual ICollection<Message> MessagesReceived { get; set; }
+
 
         public AppUser()
         {

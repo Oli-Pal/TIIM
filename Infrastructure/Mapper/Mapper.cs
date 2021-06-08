@@ -238,5 +238,75 @@ namespace Infrastructure.Mappers
             }
         }
 
+        public void MapMessageRequestToMessageEntity(MessageRequest source, ref Message destination)
+        {
+            destination = new Message
+            {
+                SenderId = source.SenderId,
+                ReceiverId = source.ReceiverId,
+                Content = source.Content
+            };
+        }
+
+        public void MapMessageEntityToMessageResponse(IEnumerable<Message> source, out IEnumerable<MessageResponse> destination)
+        {
+            var list = new List<MessageResponse>();
+
+            destination = list;
+
+            if(source is null)
+            {
+                 return;
+            }
+
+            foreach(var message in source)
+            {
+                var sender = message.Sender;
+                var receiver = message.Receiver;
+
+                list.Add(new MessageResponse
+                {
+                    Id = message.Id,
+                    SenderId = message.SenderId,
+                    ReceiverId = message.ReceiverId,
+                    Content = message.Content,
+                    DateSent = message.DateSent,
+                    DateRead = message.DateRead,
+                    SenderFirstName = sender.FirstName,
+                    SenderLastName = sender.LastName,
+                    SenderPhotoUrl = sender.MainPhotoUrl,
+                    SenderUserName = sender.UserName,
+                    ReceiverFirstName = receiver.FirstName,
+                    ReceiverLastName = receiver.LastName,
+                    ReceiverPhotoUrl = receiver.MainPhotoUrl,
+                    ReceiverUserName = receiver.UserName
+                });
+            }
+        }
+
+        public void MapMessageEntityToMessageResponse(Message source, out MessageResponse destination)
+        {
+            var sender = source.Sender;
+            var receiver = source.Receiver;
+
+            destination = new MessageResponse
+            {
+                Id = source.Id,
+                SenderId = source.SenderId,
+                ReceiverId = source.ReceiverId,
+                Content = source.Content,
+                DateSent = source.DateSent,
+                DateRead = source.DateRead,
+                SenderFirstName = sender.FirstName,
+                SenderLastName = sender.LastName,
+                SenderPhotoUrl = sender.MainPhotoUrl,
+                SenderUserName = sender.UserName,
+                ReceiverFirstName = receiver.FirstName,
+                ReceiverLastName = receiver.LastName,
+                ReceiverPhotoUrl = receiver.MainPhotoUrl,
+                ReceiverUserName = receiver.UserName
+            };
+        }
+
     }
 }

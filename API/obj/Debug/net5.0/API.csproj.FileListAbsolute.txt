@@ -162,3 +162,5 @@ D:\STUDIA\SEMESTR_8\TIM\Projekt\GramInsta\api\obj\Debug\net5.0\API.dll
 D:\STUDIA\SEMESTR_8\TIM\Projekt\GramInsta\api\obj\Debug\net5.0\ref\API.dll
 D:\STUDIA\SEMESTR_8\TIM\Projekt\GramInsta\api\obj\Debug\net5.0\API.pdb
 D:\STUDIA\SEMESTR_8\TIM\Projekt\GramInsta\api\obj\Debug\net5.0\API.genruntimeconfig.cache
+P:\Github\TIIM\api\bin\Debug\net5.0\AutoMapper.dll
+P:\Github\TIIM\api\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

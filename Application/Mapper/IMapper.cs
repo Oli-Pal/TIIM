@@ -19,5 +19,9 @@ namespace Application.Mapper
         void MapFollowEntityToFollowerDetailResponse(IEnumerable<Follow> sources, out IEnumerable<UserDetailResponse> destinations);
         void MapFollowEntityToFolloweeDetailResponse(IEnumerable<Follow> sources, out IEnumerable<UserDetailResponse> destinations);
         void MapUserToUpdateRequestToAppUserEntity(UserToUpdateRequest source, ref AppUser destination);
+
+        void MapMessageRequestToMessageEntity(MessageRequest source, ref Message destination);
+        void MapMessageEntityToMessageResponse(IEnumerable<Message> source, out IEnumerable<MessageResponse> destination);
+        void MapMessageEntityToMessageResponse(Message source, out MessageResponse destination);
     }
 }

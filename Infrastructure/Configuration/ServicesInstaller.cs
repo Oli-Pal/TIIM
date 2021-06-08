@@ -26,8 +26,11 @@ namespace Infrastructure.Configuration
             services.AddScoped<IFollowRepo, FollowRepo>();
             services.AddScoped<IPhotoLikeRepo, PhotoLikeRepo>();
             services.AddScoped<ICommentRepo, CommentRepo>();
-
-
+            services.AddScoped<IMessageRepo, MessageRepo>();
+            services.AddScoped<IConnectionRepo, ConnectionRepo>();
+            services.AddScoped<IConversationRepo, ConversationRepo>();
+            services.AddScoped<IMessageService, MessageService>();
+            services.AddScoped<IConnectionService, ConnectionService>();
 
             return services;
         }

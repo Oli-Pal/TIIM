@@ -14,14 +14,16 @@ namespace Infrastructure.DataAccess
             BuildPhotoEntity(builder);
             BuildPhotoLikeEntity(builder);
             BuildCommentEntity(builder);
-
+            BuildMessageEntity(builder);
         }
         public DbSet<AppUser> Users { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<PhotoLike> PhotoLikes { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Follow> Follows { get; set; }
-
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Connection> Connections { get; set; }
+        public DbSet<Conversation> Conversations { get; set; }
 
         private static void BuildCommentEntity(ModelBuilder builder)
         {
@@ -83,6 +85,21 @@ namespace Infrastructure.DataAccess
                 .HasOne(f => f.Followee)
                 .WithMany(x => x.Followers)
                 .HasForeignKey(f => f.FolloweeId)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
+
+          private static void BuildMessageEntity(ModelBuilder builder)
+        {
+            builder.Entity<Message>()
+                .HasOne(x => x.Sender)
+                .WithMany(x => x.MessagesSent)
+                .HasForeignKey(x => x.SenderId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Message>()
+                .HasOne(x => x.Receiver)
+                .WithMany(x => x.MessagesReceived)
+                .HasForeignKey(x => x.ReceiverId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
 
