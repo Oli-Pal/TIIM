@@ -5,7 +5,7 @@ mat-card-header {
 }
 
 p {
-    height: 40%;
+  height: 40%;
   width: 100%;
 }
 
@@ -20,4 +20,8 @@ p {
 .btn-default {
   width: 20px;
   height: 10px;
+}
+
+.header-margined {
+  margin-top: 10px;
 }

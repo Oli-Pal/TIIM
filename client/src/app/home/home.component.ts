@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
     this.presence.createHubConnection(this.loggedUser); //spr
     this.initializeUploader();
     this.getPhotosOfFollowees();
+    
   }
 
   private initializeUploader() {
@@ -90,6 +91,8 @@ export class HomeComponent implements OnInit {
       }
     );
   }
+
+
 
   private readFileUrl() {
     const reader = new FileReader();

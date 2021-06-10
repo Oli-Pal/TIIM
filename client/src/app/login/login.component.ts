@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
       .login(user)
       .toPromise()
       .then((result) => {
+       this.refresh();
         this.router.navigateByUrl('/home');
       })
       .catch((error) => {
@@ -55,4 +56,8 @@ export class LoginComponent implements OnInit {
   redirectToRegister() {
     this.router.navigateByUrl('/register');
   }
+
+  refresh(): void {
+    window.location.reload();
+}
 }

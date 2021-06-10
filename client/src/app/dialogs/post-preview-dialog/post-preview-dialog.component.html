@@ -1,4 +1,4 @@
-<mat-grid-list cols="3" rowHeight="500px" >
+<mat-grid-list cols="3" rowHeight="500px">
   <mat-grid-tile [colspan]="2" style="border-radius: 20px">
     <img class="image-preview" src="{{ data.photo.url }}" />
   </mat-grid-tile>
@@ -16,10 +16,34 @@
         Url:
         <mat-card-subtitle>{{ data.photo.url }}</mat-card-subtitle>
       </mat-card-title>
-      
-  
-    
-
     </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-card-title class="header-margined"> Comments: </mat-card-title>
+<mat-grid-list cols="3">
+  <mat-grid-tile [colspan]="1" style="border-radius: 20px">
+    <li *ngFor="let comment of comments">
+      <!-- <ng-container *ngIf="user?.id == comment?.userId"> -->
+      <div class="container-all">
+        <div class="container-img">
+          <p class="nickname-form">
+            <img
+              class="account-picture"
+              mat-card-avatar
+              [src]="
+                comment?.userMainPhotoUrl ||
+                '../../assets/temp-images/default_avatar.jpg'
+              "
+            />{{ comment.userUserName }}
+          </p>
+        </div>
+        <div class="container-content">
+          <p class="">
+            {{ comment?.content }}
+          </p>
+        </div>
+      </div>
+    </li>
   </mat-grid-tile>
 </mat-grid-list>

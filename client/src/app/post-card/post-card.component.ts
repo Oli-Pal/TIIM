@@ -14,8 +14,6 @@ import { FormControl } from '@angular/forms';
   templateUrl: './post-card.component.html',
   styleUrls: ['./post-card.component.css'],
 })
-
-
 export class PostCardComponent implements OnInit {
   @Input() photo: PhotoResponse;
   @Input() comment: CommentResponse;
@@ -62,17 +60,12 @@ export class PostCardComponent implements OnInit {
       () => {
         this.isLiked = true;
         this.getLikes();
-        this.snackBar.open('You liked', '', {
-          duration: 2000,
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
-        });
       },
       (error) => {
         this.snackBar.open(error, '', {
           duration: 2000,
           horizontalPosition: 'end',
-          verticalPosition: 'top',
+          verticalPosition: 'bottom',
         });
       }
     );
@@ -83,36 +76,27 @@ export class PostCardComponent implements OnInit {
       () => {
         this.isLiked = false;
         this.getLikes();
-         this.snackBar.open('You disliked', '', {
-          duration: 2000,
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
-        });
       },
       (error) => {
         this.snackBar.open(error, '', {
           duration: 2000,
           horizontalPosition: 'end',
-          verticalPosition: 'top',
+          verticalPosition: 'bottom',
         });
       }
     );
   }
 
   public getLikes() {
-    this.photoLikeService.getLikesForPhoto(this.photo.id).subscribe(
-      (data) => {
-        this.likers = data;
-      }
-    )
+    this.photoLikeService.getLikesForPhoto(this.photo.id).subscribe((data) => {
+      this.likers = data;
+    });
   }
 
   public getComments() {
-    this.commentService.getCommentsForPhoto(this.photo.id).subscribe(
-      (data) => {
-        this.comments = data;
-      }
-    )
+    this.commentService.getCommentsForPhoto(this.photo.id).subscribe((data) => {
+      this.comments = data;
+    });
   }
 
   public clickComment() {
@@ -122,45 +106,34 @@ export class PostCardComponent implements OnInit {
 
   public unclickComment() {
     this.isCommentClicked = false;
-    this.getComments()
+    this.getComments();
   }
 
   public addComment() {
     this.commentService.addComment(this.photo.id, this.content).subscribe(
       () => {
-        
-        this.snackBar.open('You Commented', '', {
-         duration: 2000,
-         horizontalPosition: 'end',
-         verticalPosition: 'top',
-       });
-       this.getComments();},
+        this.getComments();
+      },
       (error) => {
         this.snackBar.open(error, '', {
           duration: 2000,
           horizontalPosition: 'end',
-          verticalPosition: 'top',
+          verticalPosition: 'bottom',
         });
       }
     );
-    
   }
 
   public removeComment(commentId: string) {
-    debugger;
     this.commentService.removeComment(commentId).subscribe(
       () => {
-        this.snackBar.open('You deleted comment', '', {
-         duration: 2000,
-         horizontalPosition: 'end',
-         verticalPosition: 'top',
-       });
-       this.getComments(); },
+        this.getComments();
+      },
       (error) => {
         this.snackBar.open(error, '', {
           duration: 2000,
           horizontalPosition: 'end',
-          verticalPosition: 'top',
+          verticalPosition: 'bottom',
         });
       }
     );

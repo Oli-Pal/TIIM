@@ -58,8 +58,11 @@
       <mat-icon>messenger_outline</mat-icon>
     </button>
 
+    
+
     <form class="example-form" (submit)="addComment()">
       <mat-form-field *ngIf="isCommentClicked" class="example-full-width">
+        
         <mat-label>Comment</mat-label>
         <input
           [formControl]="commentInput"
@@ -70,20 +73,22 @@
         />
         <mat-hint align="start"><strong>Write your comment</strong> </mat-hint>
         <mat-hint align="end">{{ content.value.length }} / 256</mat-hint>
+
       </mat-form-field>
     </form>
 
-    <mat-form-field *ngIf="isCommentClicked" class="example-full-width">
+    <mat-form-field  *ngIf="isCommentClicked"class="example-full-width">
+      <div *ngIf="isCommentClicked">
       <div *ngFor="let comment of comments">
-        <ng-container *ngIf="user?.id == comment?.userId">
+        <!-- <ng-container *ngIf="user?.id == comment?.userId"> -->
           <div class="container-all">
             <div class="container-img">
               <p class="nickname-form">
                 <img
                   class="account-picture"
                   mat-card-avatar
-                  src="{{ comment?.userMainPhotoUrl }}"
-                  alt=""
+                  [src]="
+                  comment?.userMainPhotoUrl || '../../assets/temp-images/default_avatar.jpg'"
                 />{{ comment.userUserName }}
               </p>
             </div>
@@ -102,9 +107,11 @@
               </p>
             </div>
           </div>
-        </ng-container>
+        <!-- </ng-container> -->
       </div>
+    </div>
     </mat-form-field>
+
 
     <p class="reaction-p">Polubienia: {{ this.likers.length }}</p>
   </mat-card-content>
