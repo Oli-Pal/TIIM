@@ -22,10 +22,12 @@
     "@angular/platform-browser-dynamic": "~12.0.0-next.6",
     "@angular/router": "~12.0.0-next.6",
     "@microsoft/signalr": "^5.0.6",
+    "@stripe/stripe-js": "^1.15.1",
     "ng2-file-upload": "^1.4.0",
     "ngx-bootstrap": "^6.2.0",
     "ngx-toastr": "^14.0.0",
     "rxjs": "~6.5.4",
+    "stripe": "^8.156.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
   },

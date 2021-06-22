@@ -6,7 +6,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { routes } from './routes';
+
+import { loadStripe } from '@stripe/stripe-js';
 
 // Material
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -46,6 +49,8 @@ import { PresenceService } from './_services/presence.service';
 import { ToastrModule } from 'ngx-toastr';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { MemberMessagesComponent } from './member-messages/member-messages.component';
+import { MessagesComponent } from './messages/messages.component';
+import { DonateComponent } from './donate/donate.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +65,8 @@ import { MemberMessagesComponent } from './member-messages/member-messages.compo
     UserListDialogComponent,
     PostPreviewDialogComponent,
     MemberMessagesComponent,
+    MessagesComponent,
+    DonateComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +74,7 @@ import { MemberMessagesComponent } from './member-messages/member-messages.compo
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
+    PaginationModule.forRoot(),
     HttpClientModule,
     FileUploadModule,
     MatNativeDateModule,
@@ -87,6 +95,9 @@ import { MemberMessagesComponent } from './member-messages/member-messages.compo
       positionClass: 'toast-top-full-width'
     }),
   ],
+  exports: [
+    PaginationModule,
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true },
     {
@@ -102,6 +113,7 @@ import { MemberMessagesComponent } from './member-messages/member-messages.compo
     AccountDetailsResolver,
     PresenceService
   ],
+  
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -66,6 +66,14 @@ export class ToolbarComponent implements OnInit {
     this.router.navigateByUrl(`/profile/${id}`);
   }
 
+  public messagesItemClick(){
+    this.router.navigateByUrl(`/messages`)
+  }
+
+  public premiumItemClick(){
+    this.router.navigateByUrl(`/premium`)
+  }
+
   public navigateHome() {
     this.router.navigateByUrl('/home')
   }

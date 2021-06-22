@@ -38,12 +38,14 @@ export class PostCardComponent implements OnInit {
     });
   }
 
+
   ngOnInit(): void {
     this.loggedUser = JSON.parse(localStorage.getItem('user-info'));
     this.checkIfPhotoIsLiked(this.photo.id, this.loggedUser.id);
     this.getLikes();
     this.getComments();
   }
+
 
   public navigateToProfile(id: string) {
     this.router.navigateByUrl(`/profile/${id}`);

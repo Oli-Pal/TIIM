@@ -1,0 +1,47 @@
+<mat-card>
+  <mat-card-header>
+    
+    <mat-card-title> Premium posibilities</mat-card-title>
+  </mat-card-header>
+    <mat-card-content style="margin-top: 30px; padding: 32px">
+    <div class=" mat-divider">
+
+      <mat-grid-list cols="2" rowHeight="50px" style="margin-top: 5px">
+        <mat-grid-tile>
+      <mat-card-subtitle class="grid-subtitle">For one month of premium subscription:</mat-card-subtitle>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button color="accent" class="grid-button" (click)="checkout(10)">
+        Pay $10
+      </button>
+    </mat-grid-tile>
+    </mat-grid-list>
+      
+      
+    </div>
+    <div class=" mat-divider">
+      <mat-grid-list cols="2" rowHeight="50px" style="margin-top: 5px">
+        <mat-grid-tile>
+      <mat-card-subtitle class="grid-subtitle">For two months of premium subscription:</mat-card-subtitle>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button color="accent" class="grid-button" (click)="checkout(20)">
+        Pay $20
+      </button>
+    </mat-grid-tile>
+    </mat-grid-list>
+    </div>
+    <div class=" mat-divider">
+      <mat-grid-list cols="2" rowHeight="50px" style="margin-top: 5px">
+        <mat-grid-tile>
+      <mat-card-subtitle class="grid-subtitle">For three months of premium subscription:</mat-card-subtitle>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button color="accent" class="grid-button" (click)="checkout(30)">
+        Pay $30
+      </button>
+    </mat-grid-tile>
+    </mat-grid-list>
+    </div>
+  </mat-card-content>
+</mat-card>

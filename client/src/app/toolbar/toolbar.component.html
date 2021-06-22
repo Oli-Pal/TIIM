@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" style="padding-block: 35px;">
+<mat-toolbar color="primary" style="padding-block: 35px">
   <button
     mat-icon-button
     (click)="navigateHome()"
@@ -8,8 +8,13 @@
     <mat-icon>home</mat-icon>
   </button>
   <span>Instagram</span>
-  
-  <mat-form-field *ngIf="isLoggedIn()" class="example-full-width" appearance="fill" color="accent">
+
+  <mat-form-field
+    *ngIf="isLoggedIn()"
+    class="example-full-width"
+    appearance="fill"
+    color="accent"
+  >
     <mat-label>Search</mat-label>
     <input
       matInput
@@ -20,24 +25,52 @@
     />
     <mat-icon matSuffix>search</mat-icon>
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let user of foundUsers" [value]="user.userName" (click)="searchItemClick(user.id)">
+      <mat-option
+        *ngFor="let user of foundUsers"
+        [value]="user.userName"
+        (click)="searchItemClick(user.id)"
+      >
         <img
           class="example-option-img"
           aria-hidden
-          [src]="user.mainPhotoUrl || '../../assets/temp-images/default_avatar.jpg'"
+          [src]="
+            user.mainPhotoUrl || '../../assets/temp-images/default_avatar.jpg'
+          "
           height="25"
         />
         <span style="text-transform: capitalize"
           >{{ user.firstName }} {{ user.lastName }}</span
         >
-        <small style="position: absolute; right: 10px ;">
+        <small style="position: absolute; right: 10px">
           @{{ user.userName }}</small
         >
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-  
+
   <span class="example-spacer"></span>
+
+  <button
+    mat-icon-button
+    (click)="premiumItemClick()"
+    class="mail-icon favorite-icon"
+    aria-label="messages icon"
+  >
+    <mat-icon>attach_money</mat-icon>
+    Premium
+  </button>
+  <span class="spacerv2"></span>
+
+  <button
+    mat-icon-button
+    (click)="messagesItemClick()"
+    class="mail-icon favorite-icon"
+    aria-label="messages icon"
+  >
+    <mat-icon>mail_outline</mat-icon>
+    Messages
+  </button>
+  <span class="spacerv2"></span>
   <button
     *ngIf="isLoggedIn()"
     mat-icon-button
@@ -46,7 +79,7 @@
     (click)="myProfileClick()"
   >
     <mat-icon>person</mat-icon>
-    {{loggedUser.firstName}} {{loggedUser.lastName}}
+    {{ loggedUser.firstName }} {{ loggedUser.lastName }}
   </button>
   <button
     *ngIf="isLoggedIn()"
