@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { TabNavigator, AuthNavigator } from './InstaNavigator';
 import StartupScreen from '../screens/StartupScreen';
+import UserDetailsScreen from '../screens/insta/UserDetailsScreen';
 
 
 const AppNavigator = (props) => {

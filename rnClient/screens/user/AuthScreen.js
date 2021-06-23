@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView, KeyboardAvoidingView, Button, Activ
 import { useDispatch } from 'react-redux';
 import { LinearGradient } from 'expo-linear-gradient';
 
+
 import Card from '../../components/Card';
 import Input from '../../components/Input';
 import Colors from '../../constants/Colors';

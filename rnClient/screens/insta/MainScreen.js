@@ -1,24 +1,25 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { FlatList, Platform, View, Button, StyleSheet, Text, ActivityIndicator, ScrollView, Image, LayoutAnimation, TouchableHighlight, TouchableNativeFeedback, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
-import * as followedActions from '../../store/actions/followed';
-import { Header, Icon, IconBar, Metadata } from '../../components/Item';
-
-import { Ionicons } from '@expo/vector-icons';
+import { FlatList, Platform, View, Button, StyleSheet, Text, ActivityIndicator, ScrollView, Image, LayoutAnimation, TouchableHighlight, TouchableNativeFeedback, TouchableWithoutFeedback, TouchableOpacity, TouchableOpacityBase } from 'react-native';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../../components/HeaderButton';
 
+import * as followedActions from '../../store/actions/followed';
 import * as authActions from '../../store/actions/auth';
 import * as photoActions from '../../store/actions/photos';
+import InstaCard from '../../components/InstaCard';
+
 
 const MainScreen = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
-
+  const [isLiked, setIsLiked] = useState();
   const [error, setError] = useState();
 
   const followed = useSelector((state) => state.followed.userFollowed);
+  // const liked = useSelector((state) => state.likedPhotos);
+  
   const dispatch = useDispatch();
 
   const getFollowed = useCallback(async () => {
@@ -26,7 +27,8 @@ const MainScreen = (props) => {
     setIsRefreshing(true);
     
     try {
-      await dispatch(followedActions.fetchFollowed()); //this will wait for promise httprequest
+      await dispatch(followedActions.fetchFollowed());
+      
 
     } catch (err) {
       setError(err.message);
@@ -35,12 +37,10 @@ const MainScreen = (props) => {
   }, [dispatch, setIsLoading, setError]);
 
   useEffect(() => {
-  
     const unsubscribe = props.navigation.addListener('focus', getFollowed); 
-
     
     return () => {
-     unsubscribe(); //executing to clear that subscription
+     unsubscribe();
     };
   }, [getFollowed]);
 
@@ -51,40 +51,66 @@ const MainScreen = (props) => {
     });
   }, [dispatch, getFollowed]);
 
-  
+  // useEffect(() => {
+
+  //   dispatch(photoActions.loadLikes());
+  // }, [dispatch]);
+
   LayoutAnimation.easeInEaseOut();
-  const [isLiked, setIsLiked] = useState();
+
+
+
+    const likeHandler = (id) => {
+      try {
+        dispatch(photoActions.likePhoto(id));
+        setIsLiked(!isLiked);
+      } catch (error) {
+        console.log(error);
+      }
   
+   
+  };
+  
+  const dislikeHandler = async (id) => {
+    try {
+      dispatch(photoActions.dislikePhoto(id));
+      setIsLiked(false);
+    } catch (error) {
+      console.log(error);
+    }
+
+  };
+
+  const selectItemHandler = (id, username) => {
+    props.navigation.navigate('UserDetails', {
+      userId: id,
+      UserName: username,
+    });
+  };
+
+
+
   return (
     
     <View style={styles.screen}>
-   
-    
       <FlatList onRefresh={getFollowed} 
-      data={followed} refreshing={isRefreshing} 
+      data={followed } refreshing={isRefreshing} 
       keyExtractor={item => item.id}
       renderItem={(itemData) => (
-          <View style={styles.container}>
-            <Header image={{uri: itemData.item.userPhotoUrl}} name={itemData.item.userUserName}/>
-           <Image style={styles.mainImage} source={{uri: itemData.item.url}} />
-          {isLiked ? 
-          <TouchableOpacity useForeground onPress={() => {
-            dispatch(photoActions.unlikePhoto(itemData.item.id));
-            setIsLiked(false);
-              }} >
-            <Icon name="ios-heart" />
-            </TouchableOpacity>
-           :
-          <TouchableOpacity useForeground onPress={() => {
-            dispatch(photoActions.likePhoto(itemData.item.id));
-            setIsLiked(true);
-              }} >
-            <Icon name="ios-heart-outline" />
-            </TouchableOpacity>}
-           
-            <Metadata name={itemData.item.userUserName} description={itemData.item.description} />
-            
-          </View>
+       
+        <InstaCard 
+         onAvatarPress={() => {selectItemHandler(itemData.item.userId, itemData.item.userUserName)}}
+         avatarImage={{uri: itemData.item.userPhotoUrl}}
+         name={itemData.item.userUserName}
+         sourceImg={{uri: itemData.item.url}}
+         onImagePress={() => {dislikeHandler(itemData.item.id)}}
+         onHeartPress={() => {likeHandler(itemData.item.id)}}
+         heartColor={isLiked ? "red" : "black"}
+         heartShape={isLiked ? "ios-heart" : "ios-heart-outline"}
+         onCommentPress={() =>{}}
+         commentShape="ios-chatbubbles-outline"
+         description={itemData.item.description}
+        />
       )}
       />
      
@@ -116,15 +142,7 @@ export const screenOptions = (navData) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    marginLeft:2,
-    marginRight:2
-  },
-  mainImage: {
-    backgroundColor: '#2e2d2d',
-    width: '100%',
-    height:300
-  }
+ 
 });
 
 export default MainScreen;

@@ -1,13 +1,24 @@
+import PhotoAdd from "../../models/photoAdd"
 import PhotoLike from "../../models/photoLikes"
-import { ADD_LIKE, ADD_UNLIKE } from "../actions/photos"
+import { ADD_LIKE, ADD_UNLIKE, SET_LIKES, ADD_PHOTO} from "../actions/photos"
 
 const initialState = {
-    photos: []
+    photos: [],
+    likedPhotos: []
 }
 
 export default (state = initialState, action) => {
 
     switch (action.type) {
+        case SET_LIKES:
+            return {
+                likedPhotos: action.likes.map((li) => 
+                 new PhotoLike(
+                     li.LikerId,
+                     li.PhotoId,
+                     li.DateLiked
+                 )),
+            };
         case ADD_LIKE:
             const photoLike = new PhotoLike(
                 action.photos.LikerId,
@@ -23,5 +34,10 @@ export default (state = initialState, action) => {
                 ...state, 
                 photos: state.photos
             }
+            default:
+                return state;
+
     }
+    
+
 }

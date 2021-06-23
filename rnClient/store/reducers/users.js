@@ -10,7 +10,9 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SEARCH_USERS:
+  
       return {
+        ...state,
         loadedUsers: action.users
       };
     };

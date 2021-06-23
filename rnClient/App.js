@@ -10,11 +10,15 @@ import * as Font from 'expo-font';
 import authReducer from './store/reducers/auth';
 import userReducer from './store/reducers/users';
 import followedReducer from './store/reducers/followed';
+import photosReducer from './store/reducers/photos';
+
+
 
 const rootReducer = combineReducers({
   users: userReducer,
   auth: authReducer,
-  followed: followedReducer
+  followed: followedReducer,
+  photos: photosReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));

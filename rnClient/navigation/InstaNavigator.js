@@ -12,6 +12,7 @@ import SearchScreen, {screenOptions as searchScreenOptions} from '../screens/ins
 import AddPostScreen, {screenOptions as addPostScreenOptions} from '../screens/user/AddPostScreen';
 import EditProfileScreen, {screenOptions as editProfileScreenOptions} from '../screens/user/EditProfileScreen';
 import AuthScreen,  {screenOptions as authScreenOptions} from '../screens/user/AuthScreen';
+import UserDetailsScreen, {screenOptions as userDetailsScreenOptions}  from '../screens/insta/UserDetailsScreen';
 
 
 
@@ -50,7 +51,7 @@ export const TabNavigator = () => {
             />
           ),
         }}  />
-            <Tab.Screen name = "Edit" component={EditProfileStackScreen}
+            <Tab.Screen name = "UserDetails" component={UserDetailsStackScreen}
             options={{
                 tabBarIcon: (props) => (
                 <Ionicons
@@ -105,6 +106,18 @@ const EditProfileStackScreen = () => {
         
     );
 }
+
+const UserDetailsStackNavigator = createStackNavigator();
+
+export const UserDetailsStackScreen = () => {
+    return (
+        <UserDetailsStackNavigator.Navigator>
+            <UserDetailsStackNavigator.Screen name="UserDetails" component={UserDetailsScreen} options={userDetailsScreenOptions} />
+        </UserDetailsStackNavigator.Navigator>
+        
+    );
+}
+
 
 
 

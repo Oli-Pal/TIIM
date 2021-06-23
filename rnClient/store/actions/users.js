@@ -2,17 +2,19 @@ import UserToSearch  from '../../models/userstoSearch';
 export const SEARCH_USERS = 'SEARCH_USERS';
 
 
-export const searchUsers = () => {
+export const searchUsers = (search) => {
     return async (dispatch, getState) => {
       const token = getState().auth.token;
+      // search = 'tes';
       try {
         const response = await fetch(
-         `http://192.168.0.112:5001/User/search?KeyWord=${'tes'}`,
+         `http://192.168.0.112:5001/User/search?KeyWord=${search}`,
          { 
           method: 'GET', 
           headers: {
           'Authorization': `Bearer ${token}`
-              }
+              },
+             
       }
         );
   
@@ -42,6 +44,7 @@ export const searchUsers = () => {
         dispatch({
           type: SEARCH_USERS,
           users: loadedUsers,
+          search: search
         });
       } catch (err) {
         throw err;

@@ -8,150 +8,100 @@ import {
     StyleSheet,
     Text,
     ActivityIndicator,
+    TextInput,
+    RefreshControlBase
   } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import Input from '../../components/Input';
 
 
 import * as usersActions from '../../store/actions/users';
 import Colors from '../../constants/Colors';
-
-// const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE';
-
-// const formReducer = (state, action) => {
-//     if (action.type === FORM_INPUT_UPDATE) {
-//       const updatedValues = {
-//         ...state.inputValues,
-//         [action.input]: action.value,
-//       };
-//       const updatedValidities = {
-//         ...state.inputValidities,
-//         [action.input]: action.isValid,
-//       };
-//       let updatedFormIsValid = true;
-//       for (const key in updatedValidities) {
-//         updatedFormIsValid = updatedFormIsValid && updatedValidities[key]; // jezeli conajmniej jeden form jest nieprawdziwy to formIsValid wypluje false
-//       }
-//       return {
-//         formIsValid: updatedFormIsValid,
-//         inputValidities: updatedValidities,
-//         inputValues: updatedValues,
-//       };
-//     }
-//     return state;
-//   };
-  
+import SearchCard from '../../components/SearchCard';
 
 
 
 const SearchScreen = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [isRefreshing, setIsRefreshing] = useState(false);
+    const [text, onChangeTexts] = useState("");
   
     const [error, setError] = useState();
     const users = useSelector((state) => state.users.loadedUsers);
     const dispatch = useDispatch();
 
-    // const [formState, dispatchFormState] = useReducer(formReducer, {
-    //     inputValues: {
-    //       search: ''
-    //     },
-    //     inputValidities: {
-    //       search: false,
-    //     },
-    //     formIsValid: false,
-    //   });
   
     const loadUsers = useCallback(async () => {
       setError(null);
       setIsRefreshing(true);
       try {
-        await dispatch(usersActions.searchUsers()); //this will wait for promise httprequest
-        // console.log(users);
+        await dispatch(usersActions.searchUsers(text)); //this will wait for promise httprequest
+    
       } catch (err) {
         setError(err.message);
       }
      setIsRefreshing(false);
-    }, [dispatch, setIsLoading, setError]);
-  
+    }, [dispatch, setIsRefreshing , setError]);
+
     useEffect(() => {
-  
       const unsubscribe = props.navigation.addListener('focus', loadUsers); 
-  
-      
       return () => {
-       unsubscribe(); //executing to clear that subscription
+       unsubscribe(); 
       };
     }, [loadUsers]);
   
-    //fire this  whenever this components loads
+
     useEffect(() => {
       setIsLoading(true);
       loadUsers().then(() => {
         setIsLoading(false);
       });
-    }, [dispatch, loadUsers]);
-  
-   
-  //   const searchHandler = async () => {
-  //       let action;
-      
-  //         action = usersActions.searchUsers(formState.inputValues.search);
-        
-  //       setError(null);
-  //       setIsLoading(true);
-  //       try {
-  //       await dispatch(action);
-          
-  //       } catch (error) {
-  //         setError(error);
-  //         setIsLoading(false);
-  //       }
-    
-  //     };
+    }, [dispatch]);
 
-    
-  // const inputChangeHandler = useCallback(
-  //   (inputIdentifier, inputValue, inputValidity) => {
-  //     dispatchFormState({
-  //       type: FORM_INPUT_UPDATE,
-  //       value: inputValue,
-  //       isValid: inputValidity,
-  //       input: inputIdentifier,
-  //     });
-  //   },
-  //   [dispatchFormState]
-  // );
+
+
+    const selectItemHandler = (id, username) => {
+      props.navigation.navigate('UserDetails', {
+        id: id,
+        userName: username,
+      });
+    };
+
+   
   
+
     return (
         <View style={styles.screen}>
-            {/* <View style={styles.searching}> 
-                <Input
-                id="search"
-                label="Search"
-                keyboardType="default"
-                required
-                autoCapitalize="none"
-                errorText="User with such name doesn't exist"
-                onInputChange={inputChangeHandler}
-                initialValue=""
-              />
-        <Button title="Search" color={Colors.primary} onPress={searchHandler} />
-              
-              </View> */}
-      <FlatList
+          <View style={styles.inputContainer}>
+      <TextInput
+      placeholder="Search for user"
+        style={styles.input}
+        value={text}
+        onChangeText={onChangeTexts}
+        
+      />
+      <Button  title="Search" style={styles.buttonStyle} onPress={() => {loadUsers}} />
+      </View>
+ 
+      <FlatList 
         onRefresh={loadUsers}
         refreshing={isRefreshing}
         data={users}
         keyExtractor={(item) => item.id}
         renderItem={(itemData) => (
-         <View>
-             <Text>{itemData.item.userName}</Text>
-         </View>
+         
+         <SearchCard 
+         mainPhoto={{uri: itemData.item.mainPhotoUrl}}
+         name={itemData.item.userName}
+         city={itemData.item.city}
+         firstname={itemData.item.firstName}
+         surname={itemData.item.lastName}
+         onUserPress={() => { selectItemHandler(itemData.item.id, itemData.item.username )}}
+
+         />
         )}
       />
         </View>
-
+      
       
     );
 };
@@ -172,9 +122,23 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    buttonStyle: {
+      paddingLeft: 10
+    },
     searching: {
+      margin: 10,
         flexDirection: 'column'
-    }
+    },
+    inputContainer: {
+      marginTop: 10 ,
+      flexDirection: 'row',
+    },
+    input: {
+      paddingHorizontal: 2,
+      paddingVertical: 5,
+      borderBottomColor: '#ccc',
+      borderBottomWidth: 1,
+    },
 });
 
 export default SearchScreen;
