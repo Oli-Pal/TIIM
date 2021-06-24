@@ -75,7 +75,6 @@ namespace API.Controllers
 
             return Ok(followers);
         }
-
         [HttpGet("followees")]
         public async Task<IActionResult> GetFollowees([FromQuery] GuidRequest profile, CancellationToken cancellationToken)
         {

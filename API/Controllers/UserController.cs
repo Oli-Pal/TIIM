@@ -53,7 +53,7 @@ namespace API.Controllers
             return Ok(loggedUser);
         }
 
-
+        // [AllowAnonymous]
         [HttpGet("search")]
         public async Task<IActionResult> GetUsersWithKeyWord([FromQuery]GetUsersWithKeyWordQuery keyWordQuery, CancellationToken cancellationToken)
         {
@@ -94,6 +94,7 @@ namespace API.Controllers
             return Ok(updatedUser);
         }
 
+        [AllowAnonymous]
         [HttpGet("single")]
         public async Task<IActionResult> GetSingleUser([FromQuery]GuidRequest userIdRequest, CancellationToken cancellationToken)
         {
