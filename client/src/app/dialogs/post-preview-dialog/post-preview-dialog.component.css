@@ -24,4 +24,19 @@ p {
 
 .header-margined {
   margin-top: 10px;
+  margin-right: 10px;
+}
+.account-picture {
+  background-size: cover;
+  margin-block: auto;
+  width: 18px;
+  height: 18px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(133, 133, 133);
+  cursor: pointer;
+}
+
+.container-all {
+  margin-right: 12px;
 }

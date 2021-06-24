@@ -53,6 +53,7 @@
   <button
     mat-icon-button
     (click)="premiumItemClick()"
+    *ngIf="isLoggedIn()"
     class="mail-icon favorite-icon"
     aria-label="messages icon"
   >
@@ -63,6 +64,7 @@
 
   <button
     mat-icon-button
+    *ngIf="isLoggedIn()"
     (click)="messagesItemClick()"
     class="mail-icon favorite-icon"
     aria-label="messages icon"
