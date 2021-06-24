@@ -28,7 +28,7 @@ export const screenOptions = (navData) => {
   // const dispatch = useDispatch();
 
     return {
-      headerTitle: 'User',
+      headerTitle: 'User Details',
       // headerRight: () => (
       //   <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
       //       <Item

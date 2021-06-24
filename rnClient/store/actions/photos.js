@@ -1,5 +1,6 @@
 
 import { fetchLikes } from '../../helpers/db';
+import PhotoAdd from '../../models/photoAdd';
 
 
 export const ADD_LIKE = 'ADD_LIKE';
@@ -103,28 +104,74 @@ export const dislikePhoto = (id) => {
 }
 
 
-export const addPhoto = (file, description) => {
+// export const addPhoto = () => {
   
+//   return async (dispatch, getState) => {
+//     let formData = new FormData();
+//     formData.append('url', 'http://res.cloudinary.com/dcuxtexqa/image/upload/v1624516500/n84bnww59ssa6hlqs5ng.jpg');
+//     formData.append('description', 'ddddd');
+//       const userId = getState.auth.id;
+//       const token = getState().auth.token;
+//          const response = await fetch(`http://192.168.0.112:5001/Photo/add` , {
+//           method: 'POST',
+//           headers: {
+//             'Authorization': `Bearer ${token}`,
+//             'Content-Type': 'multipart/form-data'
+//           },
+//           body: formData
+//       });
+//     if (!response.ok)
+//       throw new Error('Something went wrong while fetching maps');
+
+//     const resData = await response.json();
+
+//       dispatch({
+//         type: ADD_PHOTO,
+//         photoz: {
+//           id: resData.id,
+//           url: resData.url,
+//           description: resData.description,
+//           dateAdded: resData.dateAdded,
+//           userId: resData.userId
+//       }
+//         },
+//       );
+   
+//   };
+// };
+
+export const AddPhoto = (id, url, description, dateAdded, userId) => {
   return async (dispatch, getState) => {
-      const userId = getState.auth.userId;
-      const token = getState().auth.token;
-         const response = await fetch('http://192.168.0.112:5001/Photo' , {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'multipart/form-data'
-          },
-          body: data
-      });
-    if (!response.ok)
-      throw new Error('Something went wrong while fetching maps');
+    
+    const token = getState().auth.token;
+    const userId = getState().auth.userId;
+    const response = await fetch(
+      `http://192.168.0.112:5001/Photo/add`,
+      {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id,
+          url,
+          description,
+          dateAdded,
+          userId: userId,
+        }),
+      }
+    );
 
     const resData = await response.json();
-      console.log(resData);
-      dispatch({
-        type: ADD_PHOTO,
-        },
-      );
-   
+
+    console.log(resData);
+
+    dispatch({
+      type: ADD_PHOTO,
+      photoData: {
+       
+      },
+    });
   };
 };

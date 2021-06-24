@@ -27,6 +27,7 @@ const SearchScreen = (props) => {
   
     const [error, setError] = useState();
     const users = useSelector((state) => state.users.loadedUsers);
+
     const dispatch = useDispatch();
 
   
@@ -108,7 +109,7 @@ const SearchScreen = (props) => {
 
 export const screenOptions = (navData) => {
     return {
-      headerTitle: 'SearchScreen',
+      headerTitle: 'Search for Users',
       headerStyle: {
           backgroundColor: '#C13584'
       },

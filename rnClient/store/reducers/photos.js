@@ -10,6 +10,10 @@ const initialState = {
 export default (state = initialState, action) => {
 
     switch (action.type) {
+        case ADD_PHOTO:
+            return{
+                photos: state.photos.concat(photoAdd)
+            }
         case SET_LIKES:
             return {
                 likedPhotos: action.likes.map((li) => 

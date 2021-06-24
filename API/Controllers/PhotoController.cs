@@ -39,6 +39,21 @@ namespace API.Controllers
             return NoContent();
         }
 
+      [HttpPost("add")]
+        public async Task<IActionResult> AddPhotoURL([FromBody]PhotoToAddURLRequest photo, CancellationToken cancellationToken)
+        {
+            var identifier = User.GetUserId();
+            
+            var command = new AddPhotoURLCommand
+            {
+                Photo = photo,
+                UserId = identifier
+            };
+
+            await _mediator.Send(command, cancellationToken);
+
+            return NoContent();
+        }
 
         [HttpGet("user/{id}")]
         public async Task<IActionResult> GetUserPhotos(string id, CancellationToken cancellationToken)

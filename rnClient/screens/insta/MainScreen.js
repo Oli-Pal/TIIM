@@ -18,7 +18,6 @@ const MainScreen = (props) => {
   const [error, setError] = useState();
 
   const followed = useSelector((state) => state.followed.userFollowed);
-  // const liked = useSelector((state) => state.likedPhotos);
   
   const dispatch = useDispatch();
 
@@ -28,7 +27,7 @@ const MainScreen = (props) => {
     
     try {
       await dispatch(followedActions.fetchFollowed());
-      
+     
 
     } catch (err) {
       setError(err.message);
@@ -121,7 +120,7 @@ export const screenOptions = (navData) => {
   const dispatch = useDispatch();
 
   return {
-    headerTitle: 'MainScreen',
+    headerTitle: 'GramInsta',
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
           <Item
